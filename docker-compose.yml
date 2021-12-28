@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  octoprint:
+    container_name: octoprint
+    image: octoprint/octoprint:1.7.2
+    restart: unless-stopped
+    networks:
+      automation:
+        ipv4_address: 192.168.5.140
+    devices:
+     - /dev/ttyACM0:/dev/ttyACM0
+     - /dev/video0:/dev/video0
+    volumes:
+     - octoprint-data:/octoprint
+    # uncomment the lines below to ensure camera streaming is enabled when
+    # you add a video device
+    environment:
+      - ENABLE_MJPG_STREAMER=true
+
+networks:
+  automation:
+    external: true
+
+volumes:
+  octoprint-data:
+    name: octoprint-data
