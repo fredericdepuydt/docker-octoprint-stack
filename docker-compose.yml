@@ -12,10 +12,6 @@ services:
      - /dev/ttyACM0:/dev/ttyACM0
     volumes:
      - ./config/octoprint:/octoprint
-    #uncomment the lines below to ensure camera streaming is enabled when
-    # you add a video device
-    environment:
-      - ENABLE_MJPG_STREAMER=true
 
   mediamtx:
     image: bluenviron/mediamtx:latest-rpi
